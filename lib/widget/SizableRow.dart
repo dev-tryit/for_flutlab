@@ -51,6 +51,7 @@ class _SizableRowState extends State<SizableRow> {
           key: widgetKey,
           height: double.infinity,
           child: Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(
                 flex: leftWidth.toInt(),
