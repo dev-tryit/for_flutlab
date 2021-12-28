@@ -12,6 +12,7 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        height: double.infinity,
         color: Colors.red,
         child: Column(
           mainAxisSize: MainAxisSize.max,
