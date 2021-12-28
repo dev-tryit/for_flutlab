@@ -64,8 +64,8 @@ class _SizableColumnState extends State<SizableColumn> {
             onHorizontalDragUpdate: (details) {
               totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
               double threadhold = widget.devideSize + 10;
-              if (threadhold < details.globalPosition.dy && details.globalPosition.dy < totalHeight - threadhold) {
-                topHeight = details.globalPosition.dy;
+              if (threadhold < details.localPosition.dy && details.localPosition.dy < totalHeight - threadhold) {
+                topHeight = details.localPosition.dy;
               }
               setState(() {});
             },
