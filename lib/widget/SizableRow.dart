@@ -21,7 +21,10 @@ class _SizableRowState extends State<SizableRow> {
   late double totalWidth;
   late double leftWidth;
 
-  void initState() {
+  void initState() {}
+
+  @override
+  Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       print("addPostFrameCallback");
       isLoaded = true;
@@ -29,10 +32,6 @@ class _SizableRowState extends State<SizableRow> {
       leftWidth = totalWidth / 2;
       setState(() {});
     });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return !isLoaded
         ? Center(
             child: CircularProgressIndicator(),
