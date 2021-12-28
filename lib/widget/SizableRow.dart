@@ -6,6 +6,8 @@ class SizableRow extends StatefulWidget {
 }
 
 class _SizableRowState extends State<SizableRow> {
+  Offset? oldGlobalPosition;
+
   int totalWidth = 1200;
   int leftWidth = 600;
 
@@ -35,11 +37,15 @@ class _SizableRowState extends State<SizableRow> {
               print("onHorizontalDragStart details:$details");
             },
             onHorizontalDragUpdate: (details) {
-              print("onHorizontalDragUpdate details:$details");
-              print("onHorizontalDragUpdate details:${details.localPosition}");
-              setState(() {
-                leftWidth += (details.delta.dx > 0) ? 2 : -2;
-              });
+              Offset globalPosition = details.globalPosition;
+              print("onHorizontalDragUpdate globalPosition:${globalPosition}");
+              if (oldGlobalPosition != null) {
+                int dif = (oldGlobalPosition!.dx - globalPosition.dx).toInt();
+                print("onHorizontalDragUpdate dif:$dif");
+                setState(() {
+                  leftWidth += dif;
+                });
+              }
             },
             onHorizontalDragEnd: (details) {
               print("onHorizontalDragEnd details:$details");
