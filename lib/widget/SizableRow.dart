@@ -21,6 +21,12 @@ class _SizableRowState extends State<SizableRow> {
   late double totalWidth;
   late double leftWidth;
 
+  void initState() {
+    totalWidth = _getSize(widgetKey).width;
+    leftWidth = totalWidth / 2;
+    print("initState totalWidth:$totalWidth, leftWidth:$leftWidth");
+  }
+
   @override
   Widget build(BuildContext context) {
     if (!isLoaded) {
