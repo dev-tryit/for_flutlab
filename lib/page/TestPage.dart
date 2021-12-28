@@ -15,10 +15,8 @@ class _TestPageState extends State<TestPage> {
         height: double.infinity,
         color: Colors.red,
         child: Column(
-          mainAxisSize: MainAxisSize.max,
           children: [
             Row(
-              mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(flex: leftWidth, child: Text("LeftPage")),
                 Container(
