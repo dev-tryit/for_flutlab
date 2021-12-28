@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class SizableRow extends StatefulWidget {
+  double devideSize;
+  Widget leftWidget;
+  Widget rightWidget;
+  SizableRow({this.devideSize = 8.0, required this.leftWidget, required this.rightWidget}) {}
   _SizableRowState createState() => _SizableRowState();
 }
 
 class _SizableRowState extends State<SizableRow> {
-  Offset? oldGlobalPosition;
-
   bool isLoaded = false;
-
-  double devideSize = 8;
 
   late double totalWidth;
   late double leftWidth;
@@ -41,17 +41,13 @@ class _SizableRowState extends State<SizableRow> {
               children: [
                 Expanded(
                   flex: leftWidth.toInt(),
-                  child: Container(
-                    height: double.infinity,
-                    color: Colors.blue,
-                    child: Text("LeftPage20"),
-                  ),
+                  child: widget.leftWidget,
                 ),
                 GestureDetector(
                   child: MouseRegion(
                     cursor: SystemMouseCursors.resizeLeftRight,
                     child: Container(
-                      width: devideSize,
+                      width: widget.devideSize,
                       color: Colors.grey,
                     ),
                   ),
@@ -61,7 +57,7 @@ class _SizableRowState extends State<SizableRow> {
                   onHorizontalDragUpdate: (details) {
                     print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
                     totalWidth = MediaQuery.of(context).size.width;
-                    if (devideSize < details.globalPosition.dx && details.globalPosition.dx < totalWidth - devideSize) {
+                    if (widget.devideSize < details.globalPosition.dx && details.globalPosition.dx < totalWidth - devideSize) {
                       leftWidth = details.globalPosition.dx;
                     }
                     setState(() {});
@@ -72,11 +68,7 @@ class _SizableRowState extends State<SizableRow> {
                 ),
                 Expanded(
                   flex: (totalWidth - leftWidth).toInt(),
-                  child: Container(
-                    height: double.infinity,
-                    color: Colors.red,
-                    child: Text("RightPage8"),
-                  ),
+                  child: widget.rightWidget,
                 ),
               ],
             ),
