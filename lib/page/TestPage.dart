@@ -5,6 +5,9 @@ class TestPage extends StatefulWidget {
 }
 
 class _TestPageState extends State<TestPage> {
+  int totalWidth = 1200;
+  int leftWidth = 600;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,9 +19,9 @@ class _TestPageState extends State<TestPage> {
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text("LeftPage"),
+                Expanded(flex: leftWidth, child: Text("LeftPage")),
                 Divider(thickness: 1),
-                Text("RightPage"),
+                Expanded(flex: totalWidth - leftWidth, child: Text("RightPage")),
               ],
             ),
           ],
