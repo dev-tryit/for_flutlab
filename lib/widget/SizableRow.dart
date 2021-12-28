@@ -64,6 +64,8 @@ class _SizableRowState extends State<SizableRow> {
               ),
             ),
             onHorizontalDragUpdate: (details) {
+              print("onHorizontalDragUpdate");
+
               Offset currentGlobalPosition = details.globalPosition;
               if (oldGlobalPosition != null) {
                 totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
@@ -73,8 +75,8 @@ class _SizableRowState extends State<SizableRow> {
                 if (threadhold < dx && dx < totalWidth - threadhold) {
                   print("leftWidth:$leftWidth, dx:$dx,  oldGlobalPosition:$oldGlobalPosition,  currentGlobalPosition:$currentGlobalPosition, ");
                   leftWidth += dx;
+                  setState(() {});
                 }
-                setState(() {});
               }
               oldGlobalPosition = currentGlobalPosition;
             },

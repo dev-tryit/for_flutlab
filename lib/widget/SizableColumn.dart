@@ -61,7 +61,9 @@ class _SizableColumnState extends State<SizableColumn> {
                 color: Colors.grey,
               ),
             ),
-            onHorizontalDragUpdate: (details) {
+            onVerticalDragUpdate: (details) {
+              print("onVerticalDragUpdate");
+
               totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
               double threadhold = widget.devideSize + 10;
 
