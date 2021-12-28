@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:algoritm_flutter_web/page/TestPage.dart';
 import 'package:algoritm_flutter_web/util/SizeUtil.dart';
 
 class SizableRow extends StatefulWidget {
@@ -20,7 +19,7 @@ class _SizableRowState extends State<SizableRow> {
 
   GlobalKey widgetKey = GlobalKey();
 
-  double? totalWidth;
+  late double totalWidth;
   late double leftWidth;
 
   void initState() {
@@ -41,7 +40,7 @@ class _SizableRowState extends State<SizableRow> {
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-        leftWidth = totalWidth! / 2;
+        leftWidth = totalWidth / 2;
         print("isLoaded totalWidth:$totalWidth, leftWidth:$leftWidth");
 
         finishLoading();
@@ -67,14 +66,14 @@ class _SizableRowState extends State<SizableRow> {
             onHorizontalDragUpdate: (details) {
               totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
               double threadhold = widget.devideSize + 10;
-              if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth! - threadhold) {
+              if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth - threadhold) {
                 leftWidth = details.globalPosition.dx;
               }
               setState(() {});
             },
           ),
           Expanded(
-            flex: (totalWidth ?? 0 - leftWidth).toInt(),
+            flex: (totalWidth - leftWidth).toInt(),
             child: widget.rightWidget,
           ),
         ],
