@@ -10,13 +10,16 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox.expand(
-        child: SizableRow(
-          leftWidget: leftWidget(),
-          rightWidget: rightWidget(),
-        ),
+        child: Text("test"),
       ),
     );
   }
+  /*
+  SizableRow(
+          leftWidget: leftWidget(),
+          rightWidget: rightWidget(),
+        )
+*/
 
   Widget leftWidget() {
     return Container(
