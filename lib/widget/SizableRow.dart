@@ -6,8 +6,8 @@ class SizableRow extends StatefulWidget {
 }
 
 class _SizableRowState extends State<SizableRow> {
-  int totalWidth = 1200 * 1000;
-  int leftWidth = 600 * 1000;
+  int totalWidth = 1200;
+  int leftWidth = 600;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _SizableRowState extends State<SizableRow> {
             child: Container(
               height: double.infinity,
               color: Colors.red,
-              child: Text("RightPage2"),
+              child: Text("RightPage4"),
             ),
           ),
         ],
