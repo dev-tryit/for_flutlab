@@ -42,9 +42,9 @@ class _SizableRowState extends State<SizableRow> {
               if (oldGlobalPosition != null) {
                 int dif = (oldGlobalPosition!.dx - globalPosition.dx).toInt();
                 print("onHorizontalDragUpdate dif:$dif");
-                setState(() {
-                  leftWidth += dif;
-                });
+                leftWidth += dif;
+                oldGlobalPosition = globalPosition;
+                setState(() {});
               }
             },
             onHorizontalDragEnd: (details) {
@@ -56,7 +56,7 @@ class _SizableRowState extends State<SizableRow> {
             child: Container(
               height: double.infinity,
               color: Colors.red,
-              child: Text("RightPage5"),
+              child: Text("RightPage6"),
             ),
           ),
         ],
