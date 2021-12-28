@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class SizableRow extends StatelessWidget {
-  int totalWidth = 1200;
-  int leftWidth = 600;
+class SizableRow extends StatefulWidget {
+  _SizableRowState createState() => _SizableRowState();
+}
+
+class _SizableRowState extends State<SizableRow> {
+  num totalWidth = 1200;
+  num leftWidth = 600;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class SizableRow extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: leftWidth,
+            flex: leftWidth.toInt(),
             child: Container(
               height: double.infinity,
               color: Colors.blue,
@@ -32,13 +36,16 @@ class SizableRow extends StatelessWidget {
             },
             onHorizontalDragUpdate: (details) {
               print("onHorizontalDragUpdate details:$details");
+              setState(() {
+                leftWidth += details.delta.dx;
+              });
             },
             onHorizontalDragEnd: (details) {
               print("onHorizontalDragEnd details:$details");
             },
           ),
           Expanded(
-            flex: totalWidth - leftWidth,
+            flex: (totalWidth - leftWidth).toInt(),
             child: Container(
               height: double.infinity,
               color: Colors.red,
