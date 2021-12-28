@@ -37,7 +37,6 @@ class _SizableRowState extends State<SizableRow> {
       visible: isLoaded,
       child: Container(
         key: widgetKey,
-        height: double.infinity,
         child: Row(
           children: [
             Expanded(
