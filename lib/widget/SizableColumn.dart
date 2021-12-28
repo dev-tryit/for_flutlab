@@ -2,29 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:algoritm_flutter_web/util/SizeUtil.dart';
 
-class SizableRow extends StatefulWidget {
+class SizableColumn extends StatefulWidget {
   final double devideSize;
-  final Widget leftWidget;
-  final Widget rightWidget;
-  const SizableRow({
+  final Widget topWidget;
+  final Widget bottomWidget;
+  const SizableColumn({
     this.devideSize = 8.0,
-    required this.leftWidget,
-    required this.rightWidget,
+    required this.topWidget,
+    required this.bottomWidget,
   });
-  _SizableRowState createState() => _SizableRowState();
+  _SizableColumnState createState() => _SizableColumnState();
 }
 
-class _SizableRowState extends State<SizableRow> {
+class _SizableColumnState extends State<SizableColumn> {
   bool isLoaded = false;
 
   GlobalKey widgetKey = GlobalKey();
 
-  late double totalWidth;
-  late double leftWidth;
+  late double totalHeight;
+  late double leftHeight;
 
   void initState() {
-    totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-    leftWidth = totalWidth / 2;
+    totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
+    leftHeight = totalHeight / 2;
   }
 
   void finishLoading() {
@@ -36,8 +36,8 @@ class _SizableRowState extends State<SizableRow> {
   Widget build(BuildContext context) {
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-        leftWidth = totalWidth / 2;
+        totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
+        leftHeight = totalHeight / 2;
 
         finishLoading();
       });
@@ -45,32 +45,32 @@ class _SizableRowState extends State<SizableRow> {
 
     return Container(
       key: widgetKey,
-      child: Row(
+      child: Column(
         children: [
           Expanded(
-            flex: leftWidth.toInt(),
-            child: widget.leftWidget,
+            flex: leftHeight.toInt(),
+            child: widget.topWidget,
           ),
           GestureDetector(
             child: MouseRegion(
               cursor: SystemMouseCursors.resizeLeftRight,
               child: Container(
-                width: widget.devideSize,
+                height: widget.devideSize,
                 color: Colors.grey,
               ),
             ),
             onHorizontalDragUpdate: (details) {
-              totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
+              totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
               double threadhold = widget.devideSize + 10;
-              if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth - threadhold) {
-                leftWidth = details.globalPosition.dx;
+              if (threadhold < details.globalPosition.dy && details.globalPosition.dy < totalHeight - threadhold) {
+                leftHeight = details.globalPosition.dy;
               }
               setState(() {});
             },
           ),
           Expanded(
-            flex: (totalWidth - leftWidth).toInt(),
-            child: widget.rightWidget,
+            flex: (totalHeight - leftHeight).toInt(),
+            child: widget.bottomWidget,
           ),
         ],
       ),
