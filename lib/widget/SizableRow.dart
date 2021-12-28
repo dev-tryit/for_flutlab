@@ -17,8 +17,6 @@ class SizableRow extends StatefulWidget {
 class _SizableRowState extends State<SizableRow> {
   bool isLoaded = false;
 
-  Offset? oldGlobalPosition;
-
   GlobalKey widgetKey = GlobalKey();
 
   late double totalWidth;
@@ -65,18 +63,32 @@ class _SizableRowState extends State<SizableRow> {
             ),
             onHorizontalDragUpdate: (details) {
               print("onHorizontalDragUpdate");
-
+              /*
+                     
               Offset currentGlobalPosition = details.globalPosition;
               if (oldGlobalPosition != null) {
                 totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
                 double threadhold = widget.devideSize + 10;
 
                 double dx = currentGlobalPosition.dx - oldGlobalPosition!.dx;
-                print("leftWidth:$leftWidth, dx:$dx,  oldGlobalPosition:$oldGlobalPosition,  currentGlobalPosition:$currentGlobalPosition, ");
+                if (threadhold < dx && dx < totalWidth - threadhold) {
+                  print("leftWidth:$leftWidth, dx:$dx,  oldGlobalPosition:$oldGlobalPosition,  currentGlobalPosition:$currentGlobalPosition, ");
+                  leftWidth += dx;
+                  setState(() {});
+                }
+              }
+              oldGlobalPosition = currentGlobalPosition;
+              */
+
+              totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
+              double threadhold = widget.devideSize + 10;
+
+              double dx = details.globalPosition.dx;
+              if (threadhold < dx && dx < totalWidth - threadhold) {
+                print("leftWidth:$leftWidth, dx:$dx");
                 leftWidth += dx;
                 setState(() {});
               }
-              oldGlobalPosition = currentGlobalPosition;
             },
           ),
           Expanded(
