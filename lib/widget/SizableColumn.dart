@@ -53,7 +53,7 @@ class _SizableColumnState extends State<SizableColumn> {
           ),
           GestureDetector(
             child: MouseRegion(
-              cursor: SystemMouseCursors.resizeLeftRight,
+              cursor: SystemMouseCursors.resizeUpDown,
               child: Container(
                 height: widget.devideSize,
                 color: Colors.grey,
