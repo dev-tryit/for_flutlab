@@ -21,6 +21,7 @@ class _SizableRowState extends State<SizableRow> {
   void onLoad() {
     isLoaded = true;
     totalWidth = MediaQuery.of(context).size.width;
+    leftWidth = totalWidth / 2;
     setState(() {});
   }
 
