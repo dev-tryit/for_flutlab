@@ -24,7 +24,7 @@ class _SizableRowState extends State<SizableRow> {
   late double leftWidth;
 
   void initState() {
-    totalWidth = _getSize(widgetKey).width;
+    totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
     leftWidth = totalWidth / 2;
     print("initState totalWidth:$totalWidth, leftWidth:$leftWidth");
   }
@@ -40,7 +40,7 @@ class _SizableRowState extends State<SizableRow> {
 
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        totalWidth = _getSize(widgetKey).width;
+        totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
         leftWidth = totalWidth / 2;
         print("isLoaded totalWidth:$totalWidth, leftWidth:$leftWidth");
 
@@ -48,53 +48,46 @@ class _SizableRowState extends State<SizableRow> {
       });
     }
 
-    return Row(
-      children: [
-        Container(
-          key: widgetKey,
-          width: SizeUtil.screenSize(context).width,
-          height: SizeUtil.screenSize(context).height,
-          child: Row(
-            children: [
-              Expanded(
-                flex: leftWidth.toInt(),
-                child: widget.leftWidget,
-              ),
-              GestureDetector(
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.resizeLeftRight,
-                  child: Container(
-                    width: widget.devideSize,
-                    color: Colors.grey,
-                  ),
+    return Container(
+      width: SizeUtil.screenSize(context).width,
+      child: Row(
+        children: [
+          Container(
+            key: widgetKey,
+            width: SizeUtil.screenSize(context).width,
+            height: SizeUtil.screenSize(context).width,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: leftWidth.toInt(),
+                  child: widget.leftWidget,
                 ),
-                onHorizontalDragUpdate: (details) {
-                  totalWidth = _getSize(widgetKey).width;
-                  double threadhold = widget.devideSize + 10;
-                  if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth - threadhold) {
-                    leftWidth = details.globalPosition.dx;
-                  }
-                  setState(() {});
-                },
-              ),
-              Expanded(
-                flex: (totalWidth - leftWidth).toInt(),
-                child: widget.rightWidget,
-              ),
-            ],
+                GestureDetector(
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.resizeLeftRight,
+                    child: Container(
+                      width: widget.devideSize,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  onHorizontalDragUpdate: (details) {
+                    totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
+                    double threadhold = widget.devideSize + 10;
+                    if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth - threadhold) {
+                      leftWidth = details.globalPosition.dx;
+                    }
+                    setState(() {});
+                  },
+                ),
+                Expanded(
+                  flex: (totalWidth - leftWidth).toInt(),
+                  child: widget.rightWidget,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
-  }
-
-  Size _getSize(GlobalKey key) {
-    if (key.currentContext != null) {
-      final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
-      Size size = renderBox.size;
-      return size;
-    }
-
-    return Size(0, 0);
   }
 }
