@@ -6,9 +6,10 @@ class SizableRow extends StatefulWidget {
 }
 
 class _SizableRowState extends State<SizableRow> {
+  Offset? oldGlobalPosition;
+
   bool isLoaded = false;
 
-  Offset? oldGlobalPosition;
   late double totalWidth;
   late double leftWidth;
 
@@ -40,7 +41,7 @@ class _SizableRowState extends State<SizableRow> {
                   child: Container(
                     height: double.infinity,
                     color: Colors.blue,
-                    child: Text("LeftPage10"),
+                    child: Text("LeftPage11"),
                   ),
                 ),
                 GestureDetector(
