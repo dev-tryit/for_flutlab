@@ -29,7 +29,6 @@ class _SizableRowState extends State<SizableRow> {
 
   @override
   Widget build(BuildContext context) {
-    print("build");
     return !isLoaded
         ? Center(
             child: CircularProgressIndicator(),
@@ -43,7 +42,7 @@ class _SizableRowState extends State<SizableRow> {
                   child: Container(
                     height: double.infinity,
                     color: Colors.blue,
-                    child: Text("LeftPage16"),
+                    child: Text("LeftPage17"),
                   ),
                 ),
                 GestureDetector(
@@ -59,6 +58,7 @@ class _SizableRowState extends State<SizableRow> {
                   },
                   onHorizontalDragUpdate: (details) {
                     print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
+                    totalWidth = MediaQuery.of(context).size.width;
                     leftWidth = details.globalPosition.dx;
                     setState(() {});
                   },
