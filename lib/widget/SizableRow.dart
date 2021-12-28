@@ -3,14 +3,14 @@ import 'package:flutter/rendering.dart';
 import 'package:algoritm_flutter_web/util/SizeUtil.dart';
 
 class SizableRow extends StatefulWidget {
-  double devideSize;
-  Widget leftWidget;
-  Widget rightWidget;
-  SizableRow({
+  final double devideSize;
+  final Widget leftWidget;
+  final Widget rightWidget;
+  const SizableRow({
     this.devideSize = 8.0,
     required this.leftWidget,
     required this.rightWidget,
-  }) {}
+  });
   _SizableRowState createState() => _SizableRowState();
 }
 
@@ -25,7 +25,6 @@ class _SizableRowState extends State<SizableRow> {
   void initState() {
     totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
     leftWidth = totalWidth / 2;
-    print("initState totalWidth:$totalWidth, leftWidth:$leftWidth");
   }
 
   void finishLoading() {
@@ -35,13 +34,10 @@ class _SizableRowState extends State<SizableRow> {
 
   @override
   Widget build(BuildContext context) {
-    print("build");
-
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
         leftWidth = totalWidth / 2;
-        print("isLoaded totalWidth:$totalWidth, leftWidth:$leftWidth");
 
         finishLoading();
       });
