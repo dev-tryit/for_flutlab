@@ -5,7 +5,11 @@ class SizableRow extends StatefulWidget {
   double devideSize;
   Widget leftWidget;
   Widget rightWidget;
-  SizableRow({this.devideSize = 8.0, required this.leftWidget, required this.rightWidget}) {}
+  SizableRow({
+    this.devideSize = 8.0,
+    required this.leftWidget,
+    required this.rightWidget,
+  }) {}
   _SizableRowState createState() => _SizableRowState();
 }
 
