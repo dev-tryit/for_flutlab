@@ -25,10 +25,10 @@ class _SizableRowState extends State<SizableRow> {
   Widget build(BuildContext context) {
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
-        print("isLoaded");
         isLoaded = true;
         totalWidth = _getSize(widgetKey).width;
         leftWidth = totalWidth / 2;
+        print("isLoaded totalWidth:$totalWidth, leftWidth:$leftWidth");
 
         setState(() {});
       });
