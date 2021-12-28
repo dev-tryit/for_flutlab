@@ -30,6 +30,9 @@ class SizableRow extends StatelessWidget {
             onHorizontalDragStart: (details) {
               print("onHorizontalDragStart details:$details");
             },
+            onHorizontalDragUpdate: (details) {
+              print("onHorizontalDragUpdate details:$details");
+            },
             onHorizontalDragEnd: (details) {
               print("onHorizontalDragEnd details:$details");
             },
@@ -39,7 +42,7 @@ class SizableRow extends StatelessWidget {
             child: Container(
               height: double.infinity,
               color: Colors.red,
-              child: Text("RightPage1"),
+              child: Text("RightPage2"),
             ),
           ),
         ],
