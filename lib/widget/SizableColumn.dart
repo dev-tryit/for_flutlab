@@ -64,14 +64,15 @@ class _SizableColumnState extends State<SizableColumn> {
             onVerticalDragUpdate: (details) {
               print("onVerticalDragUpdate");
 
-              totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
+              totalHeight = SizeUtil.getSizeByKey(widgetKey).width;
               double threadhold = widget.devideSize + 10;
 
-              double dy = details.delta.dy;
+              double dy = details.globalPosition.dy;
               if (threadhold < dy && dy < totalHeight - threadhold) {
-                topHeight += dy;
+                print("topHeight:$topHeight, dy:$dy");
+                topHeight = dy;
+                setState(() {});
               }
-              setState(() {});
             },
           ),
           Expanded(
