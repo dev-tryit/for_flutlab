@@ -64,8 +64,10 @@ class _SizableRowState extends State<SizableRow> {
             onHorizontalDragUpdate: (details) {
               totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
               double threadhold = widget.devideSize + 10;
-              if (threadhold < details.localPosition.dx && details.localPosition.dx < totalWidth - threadhold) {
-                leftWidth = details.localPosition.dx;
+
+              double dx = details.delta.dx;
+              if (threadhold < dx && dx < totalWidth - threadhold) {
+                leftWidth = dx;
               }
               setState(() {});
             },
