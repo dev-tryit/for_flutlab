@@ -12,18 +12,13 @@ class _TestPageState extends State<TestPage> {
     return Scaffold(
       body: TrySizedBox.expand(
         child: SizableRow(
-          leftWidget: leftWidget(),
-          rightWidget: rightWidget(),
+          leftWidget: SizableRow(
+            leftWidget: Text("1"),
+            rightWidget: Text("2"),
+          ),
+          rightWidget: Text("3"),
         ),
       ),
     );
-  }
-
-  Widget leftWidget() {
-    return Text("leftWidget8");
-  }
-
-  Widget rightWidget() {
-    return Text("rightWidget8");
   }
 }
