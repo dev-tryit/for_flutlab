@@ -25,6 +25,7 @@ class _SizableRowState extends State<SizableRow> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       isLoaded = true;
       totalWidth = _getSize(widgetKey).width;
+      leftWidth = totalWidth / 2;
       setState(() {});
     });
   }
