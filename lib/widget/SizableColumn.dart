@@ -20,11 +20,11 @@ class _SizableColumnState extends State<SizableColumn> {
   GlobalKey widgetKey = GlobalKey();
 
   late double totalHeight;
-  late double leftHeight;
+  late double topHeight;
 
   void initState() {
     totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
-    leftHeight = totalHeight / 2;
+    topHeight = totalHeight / 2;
   }
 
   void finishLoading() {
@@ -37,7 +37,7 @@ class _SizableColumnState extends State<SizableColumn> {
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
-        leftHeight = totalHeight / 2;
+        topHeight = totalHeight / 2;
 
         finishLoading();
       });
@@ -46,9 +46,11 @@ class _SizableColumnState extends State<SizableColumn> {
     return Container(
       key: widgetKey,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: leftHeight.toInt(),
+            flex: topHeight.toInt(),
             child: widget.topWidget,
           ),
           GestureDetector(
@@ -63,13 +65,13 @@ class _SizableColumnState extends State<SizableColumn> {
               totalHeight = SizeUtil.getSizeByKey(widgetKey).height;
               double threadhold = widget.devideSize + 10;
               if (threadhold < details.globalPosition.dy && details.globalPosition.dy < totalHeight - threadhold) {
-                leftHeight = details.globalPosition.dy;
+                topHeight = details.globalPosition.dy;
               }
               setState(() {});
             },
           ),
           Expanded(
-            flex: (totalHeight - leftHeight).toInt(),
+            flex: (totalHeight - topHeight).toInt(),
             child: widget.bottomWidget,
           ),
         ],
