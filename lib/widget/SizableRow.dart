@@ -20,7 +20,7 @@ class _SizableRowState extends State<SizableRow> {
             child: Container(
               height: double.infinity,
               color: Colors.blue,
-              child: Text("LeftPage1"),
+              child: Text("LeftPage2"),
             ),
           ),
           GestureDetector(
