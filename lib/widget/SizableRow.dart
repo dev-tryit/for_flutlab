@@ -38,15 +38,15 @@ class _SizableRowState extends State<SizableRow> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: !isLoaded ? double.infinity : 0,
+        Expanded(
+          flex: !isLoaded ? 1 : 0,
           child: Center(
             child: CircularProgressIndicator(),
           ),
         ),
         Container(
           key: widgetKey,
-          width: isLoaded ? double.infinity : 0,
+          flex: isLoaded ? 1 : 0,
           height: double.infinity,
           child: Row(
             children: [
