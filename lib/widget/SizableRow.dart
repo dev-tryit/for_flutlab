@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:algoritm_flutter_web/page/TestPage.dart';
+import 'package:algoritm_flutter_web/widget/TrySizedBox.dart';
 import 'package:algoritm_flutter_web/util/SizeUtil.dart';
 
 class SizableRow extends StatefulWidget {

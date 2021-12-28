@@ -9,10 +9,8 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox.expand(
-        child: Center(
-          child: Text("test"),
-        ),
+      body: TrySizedBox(
+        child: Text("test"),
       ),
     );
   }
