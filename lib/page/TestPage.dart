@@ -22,7 +22,6 @@ class _TestPageState extends State<TestPage> {
                 Expanded(flex: leftWidth, child: Text("LeftPage")),
                 Container(
                   width: 1,
-                  height: 10000,
                   color: Colors.grey,
                 ),
                 Expanded(flex: totalWidth - leftWidth, child: Text("RightPage")),
