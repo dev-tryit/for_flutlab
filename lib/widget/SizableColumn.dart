@@ -50,7 +50,7 @@ class _SizableColumnState extends State<SizableColumn> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: (topHeight * 1000).toInt(),
+            flex: (topHeight * 1000000000).toInt(),
             child: widget.topWidget,
           ),
           GestureDetector(
@@ -76,7 +76,7 @@ class _SizableColumnState extends State<SizableColumn> {
             },
           ),
           Expanded(
-            flex: ((totalHeight - topHeight) * 1000).toInt(),
+            flex: ((totalHeight - topHeight) * 1000000000).toInt(),
             child: widget.bottomWidget,
           ),
         ],
