@@ -9,7 +9,17 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizableRow(),
+      body: SizableRow(
+          leftWidget: Container(
+            height: double.infinity,
+            color: Colors.red,
+            child: Text("leftWidget"),
+          ),
+          rightWidget: Container(
+            height: double.infinity,
+            color: Colors.red,
+            child: Text("rightWidget"),
+          )),
     );
   }
 }
