@@ -19,12 +19,21 @@ class SizableRow extends StatelessWidget {
               child: Text("LeftPage1"),
             ),
           ),
-          MouseRegion(
-            cursor: SystemMouseCursors.resizeLeftRight,
-            child: Container(
-              width: 8,
-              color: Colors.grey,
+          GestureDetector(
+            child: MouseRegion(
+              cursor: SystemMouseCursors.resizeLeftRight,
+              child: Container(
+                width: 8,
+                color: Colors.grey,
+              ),
             ),
+            onHorizontalDragStart: ,
+            onDragStarted: () {
+              print("onDragStarted");
+            },
+            onDragEnd: (details) {
+              print("onDragEnd");
+            },
           ),
           Expanded(
             flex: totalWidth - leftWidth,
