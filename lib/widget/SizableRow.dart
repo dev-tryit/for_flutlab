@@ -49,40 +49,33 @@ class _SizableRowState extends State<SizableRow> {
     }
 
     return Container(
-      width: totalWidth,
+      key: widgetKey,
       child: Row(
         children: [
-          Container(
-            key: widgetKey,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: leftWidth.toInt(),
-                  child: widget.leftWidget,
-                ),
-                GestureDetector(
-                  child: MouseRegion(
-                    cursor: SystemMouseCursors.resizeLeftRight,
-                    child: Container(
-                      width: widget.devideSize,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  onHorizontalDragUpdate: (details) {
-                    totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-                    double threadhold = widget.devideSize + 10;
-                    if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth! - threadhold) {
-                      leftWidth = details.globalPosition.dx;
-                    }
-                    setState(() {});
-                  },
-                ),
-                Expanded(
-                  flex: (totalWidth ?? 0 - leftWidth).toInt(),
-                  child: widget.rightWidget,
-                ),
-              ],
+          Expanded(
+            flex: leftWidth.toInt(),
+            child: widget.leftWidget,
+          ),
+          GestureDetector(
+            child: MouseRegion(
+              cursor: SystemMouseCursors.resizeLeftRight,
+              child: Container(
+                width: widget.devideSize,
+                color: Colors.grey,
+              ),
             ),
+            onHorizontalDragUpdate: (details) {
+              totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
+              double threadhold = widget.devideSize + 10;
+              if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth! - threadhold) {
+                leftWidth = details.globalPosition.dx;
+              }
+              setState(() {});
+            },
+          ),
+          Expanded(
+            flex: (totalWidth ?? 0 - leftWidth).toInt(),
+            child: widget.rightWidget,
           ),
         ],
       ),
