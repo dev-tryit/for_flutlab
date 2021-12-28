@@ -27,12 +27,11 @@ class SizableRow extends StatelessWidget {
                 color: Colors.grey,
               ),
             ),
-            onHorizontalDragStart: ,
-            onDragStarted: () {
-              print("onDragStarted");
+            onHorizontalDragStart: (details) {
+              print("onHorizontalDragStart details:$details");
             },
-            onDragEnd: (details) {
-              print("onDragEnd");
+            onHorizontalDragEnd: (details) {
+              print("onHorizontalDragEnd details:$details");
             },
           ),
           Expanded(
@@ -40,7 +39,7 @@ class SizableRow extends StatelessWidget {
             child: Container(
               height: double.infinity,
               color: Colors.red,
-              child: Text("RightPage"),
+              child: Text("RightPage1"),
             ),
           ),
         ],
