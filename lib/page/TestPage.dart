@@ -9,9 +9,12 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizableRow(
-        leftWidget: leftWidget(),
-        rightWidget: rightWidget(),
+      body: SizedBox(
+        width: 200,
+        child: SizableRow(
+          leftWidget: leftWidget(),
+          rightWidget: rightWidget(),
+        ),
       ),
     );
   }
