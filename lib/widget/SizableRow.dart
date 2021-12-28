@@ -43,9 +43,9 @@ class _SizableRowState extends State<SizableRow> {
                 int dif = (oldGlobalPosition!.dx - globalPosition.dx).toInt();
                 print("onHorizontalDragUpdate dif:$dif");
                 leftWidth += dif;
-                oldGlobalPosition = globalPosition;
                 setState(() {});
               }
+              oldGlobalPosition = globalPosition;
             },
             onHorizontalDragEnd: (details) {
               print("onHorizontalDragEnd details:$details");
