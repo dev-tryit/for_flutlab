@@ -16,6 +16,8 @@ class SizableRow extends StatefulWidget {
 class _SizableRowState extends State<SizableRow> {
   bool isLoaded = false;
 
+  GlobalKey widgetKey = GlobalKey();
+
   late double totalWidth;
   late double leftWidth;
 
@@ -27,7 +29,7 @@ class _SizableRowState extends State<SizableRow> {
 
   void onLoad() {
     isLoaded = true;
-    totalWidth = MediaQuery.of(context).size.width;
+    totalWidth = _getSize(widgetKey).width;
     leftWidth = totalWidth / 2;
     setState(() {});
   }
@@ -39,6 +41,7 @@ class _SizableRowState extends State<SizableRow> {
             child: CircularProgressIndicator(),
           )
         : Container(
+            key: widgetKey,
             height: double.infinity,
             child: Row(
               children: [
@@ -55,7 +58,7 @@ class _SizableRowState extends State<SizableRow> {
                     ),
                   ),
                   onHorizontalDragUpdate: (details) {
-                    totalWidth = MediaQuery.of(context).size.width;
+                    totalWidth = _getSize(widgetKey).width;
                     if (widget.devideSize < details.globalPosition.dx && details.globalPosition.dx < totalWidth - widget.devideSize) {
                       leftWidth = details.globalPosition.dx;
                     }
@@ -69,5 +72,15 @@ class _SizableRowState extends State<SizableRow> {
               ],
             ),
           );
+  }
+
+  Size _getSize(GlobalKey key) {
+    if (key.currentContext != null) {
+      final RenderBox renderBox = key.currentContext!.findRenderObject() as RenderBox;
+      Size size = renderBox.size;
+      return size;
+    }
+
+    return Size(0, 0);
   }
 }
