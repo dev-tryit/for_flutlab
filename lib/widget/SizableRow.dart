@@ -27,10 +27,13 @@ class _SizableRowState extends State<SizableRow> {
   Widget build(BuildContext context) {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       print("addPostFrameCallback");
-      isLoaded = true;
-      totalWidth = _getSize(widgetKey).width;
-      leftWidth = totalWidth / 2;
-      setState(() {});
+      if (!isLoaded) {
+        isLoaded = true;
+        totalWidth = _getSize(widgetKey).width;
+        leftWidth = totalWidth / 2;
+
+        setState(() {});
+      }
     });
     return !isLoaded
         ? Center(
