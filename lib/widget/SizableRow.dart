@@ -20,12 +20,12 @@ class _SizableRowState extends State<SizableRow> {
 
   GlobalKey widgetKey = GlobalKey();
 
-  late double totalWidth;
+  double? totalWidth;
   late double leftWidth;
 
   void initState() {
-    totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-    leftWidth = totalWidth / 2;
+    totalWidth = null;
+    leftWidth = 0;
     print("initState totalWidth:$totalWidth, leftWidth:$leftWidth");
   }
 
@@ -41,7 +41,7 @@ class _SizableRowState extends State<SizableRow> {
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-        leftWidth = totalWidth / 2;
+        leftWidth = totalWidth! / 2;
         print("isLoaded totalWidth:$totalWidth, leftWidth:$leftWidth");
 
         finishLoading();
@@ -71,14 +71,14 @@ class _SizableRowState extends State<SizableRow> {
                   onHorizontalDragUpdate: (details) {
                     totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
                     double threadhold = widget.devideSize + 10;
-                    if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth - threadhold) {
+                    if (threadhold < details.globalPosition.dx && details.globalPosition.dx < totalWidth! - threadhold) {
                       leftWidth = details.globalPosition.dx;
                     }
                     setState(() {});
                   },
                 ),
                 Expanded(
-                  flex: (totalWidth - leftWidth).toInt(),
+                  flex: (totalWidth ?? 0 - leftWidth).toInt(),
                   child: widget.rightWidget,
                 ),
               ],
