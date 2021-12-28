@@ -21,8 +21,6 @@ class _SizableRowState extends State<SizableRow> {
   late double totalWidth;
   late double leftWidth;
 
-  void initState() {}
-
   @override
   Widget build(BuildContext context) {
     if (!isLoaded) {
@@ -38,14 +36,8 @@ class _SizableRowState extends State<SizableRow> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-          flex: !isLoaded ? 1 : 0,
-          child: Center(
-            child: CircularProgressIndicator(),
-          ),
-        ),
-        Expanded(
-          flex: isLoaded ? 1 : 0,
+        Visibility(
+          visible: isLoaded,
           child: Container(
             key: widgetKey,
             height: double.infinity,
