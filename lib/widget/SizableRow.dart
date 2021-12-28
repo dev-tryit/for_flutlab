@@ -72,9 +72,11 @@ class _SizableRowState extends State<SizableRow> {
                 double threadhold = widget.devideSize + 10;
 
                 double dx = currentGlobalPosition.dx - oldGlobalPosition!.dx;
-                print("leftWidth:$leftWidth, dx:$dx,  oldGlobalPosition:$oldGlobalPosition,  currentGlobalPosition:$currentGlobalPosition, ");
-                leftWidth += dx;
-                setState(() {});
+                if (threadhold < leftWidth && leftWidth < totalWidth - threadhold) {
+                  print("leftWidth:$leftWidth, dx:$dx,  oldGlobalPosition:$oldGlobalPosition,  currentGlobalPosition:$currentGlobalPosition, ");
+                  leftWidth += dx;
+                  setState(() {});
+                }
               }
               oldGlobalPosition = currentGlobalPosition;
             },
