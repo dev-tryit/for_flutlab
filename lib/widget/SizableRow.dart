@@ -29,6 +29,7 @@ class _SizableRowState extends State<SizableRow> {
 
   @override
   Widget build(BuildContext context) {
+    print("build");
     return !isLoaded
         ? Center(
             child: CircularProgressIndicator(),
@@ -42,7 +43,7 @@ class _SizableRowState extends State<SizableRow> {
                   child: Container(
                     height: double.infinity,
                     color: Colors.blue,
-                    child: Text("LeftPage14"),
+                    child: Text("LeftPage15"),
                   ),
                 ),
                 GestureDetector(
