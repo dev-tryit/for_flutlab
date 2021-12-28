@@ -6,8 +6,8 @@ class SizableRow extends StatefulWidget {
 }
 
 class _SizableRowState extends State<SizableRow> {
-  num totalWidth = 1200;
-  num leftWidth = 600;
+  int totalWidth = 1200 * 1000;
+  int leftWidth = 600 * 1000;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _SizableRowState extends State<SizableRow> {
             onHorizontalDragUpdate: (details) {
               print("onHorizontalDragUpdate details:$details");
               setState(() {
-                leftWidth += details.delta.dx;
+                leftWidth += (details.delta.dx * 1000).toInt();
               });
             },
             onHorizontalDragEnd: (details) {
