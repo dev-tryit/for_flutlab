@@ -23,7 +23,7 @@ class _TestPageState extends State<TestPage> {
     return Container(
       height: double.infinity,
       color: Colors.red,
-      child: Text("leftWidget4"),
+      child: Text("leftWidget5"),
     );
   }
 
@@ -31,7 +31,7 @@ class _TestPageState extends State<TestPage> {
     return Container(
       height: double.infinity,
       color: Colors.red,
-      child: Text("rightWidget4"),
+      child: Text("rightWidget5"),
     );
   }
 }
