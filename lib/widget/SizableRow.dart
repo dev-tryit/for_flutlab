@@ -43,7 +43,7 @@ class _SizableRowState extends State<SizableRow> {
                   child: Container(
                     height: double.infinity,
                     color: Colors.blue,
-                    child: Text("LeftPage15"),
+                    child: Text("LeftPage16"),
                   ),
                 ),
                 GestureDetector(
@@ -59,7 +59,7 @@ class _SizableRowState extends State<SizableRow> {
                   },
                   onHorizontalDragUpdate: (details) {
                     print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
-                    leftWidth += details.globalPosition.dx;
+                    leftWidth = details.globalPosition.dx;
                     setState(() {});
                   },
                   onHorizontalDragEnd: (details) {
