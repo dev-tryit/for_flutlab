@@ -44,7 +44,7 @@ class _SizableRowState extends State<SizableRow> {
       });
     }
 
-    return Column(
+    return Row(
       children: [
         Container(
           key: widgetKey,
