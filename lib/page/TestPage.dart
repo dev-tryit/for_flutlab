@@ -20,7 +20,10 @@ class _TestPageState extends State<TestPage> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(flex: leftWidth, child: Text("LeftPage")),
-                Divider(thickness: 1),
+                Divider(
+                  thickness: 1,
+                  color: Colors.grey,
+                ),
                 Expanded(flex: totalWidth - leftWidth, child: Text("RightPage")),
               ],
             ),
