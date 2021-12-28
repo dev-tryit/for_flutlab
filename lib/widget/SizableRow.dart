@@ -17,6 +17,8 @@ class SizableRow extends StatefulWidget {
 class _SizableRowState extends State<SizableRow> {
   bool isLoaded = false;
 
+  Offset? oldGlobalPosition;
+
   GlobalKey widgetKey = GlobalKey();
 
   late double totalWidth;
@@ -62,14 +64,18 @@ class _SizableRowState extends State<SizableRow> {
               ),
             ),
             onHorizontalDragUpdate: (details) {
-              totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-              double threadhold = widget.devideSize + 10;
+              Offset currentGlobalPosition = details.globalPosition;
+              if (oldGlobalPosition != null) {
+                totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
+                double threadhold = widget.devideSize + 10;
 
-              double dx = details.delta.dx;
-              if (threadhold < dx && dx < totalWidth - threadhold) {
-                leftWidth = dx;
+                double dx = currentGlobalPosition.dx - oldGlobalPosition!.dx;
+                if (threadhold < dx && dx < totalWidth - threadhold) {
+                  leftWidth = dx;
+                }
+                setState(() {});
               }
-              setState(() {});
+              oldGlobalPosition = currentGlobalPosition;
             },
           ),
           Expanded(
