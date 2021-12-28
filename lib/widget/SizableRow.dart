@@ -52,8 +52,7 @@ class _SizableRowState extends State<SizableRow> {
       children: [
         Container(
           key: widgetKey,
-          width: SizeUtil.screenSize(context).width,
-          height: SizeUtil.screenSize(context).width,
+          width: totalWidth,
           child: Row(
             children: [
               Expanded(
