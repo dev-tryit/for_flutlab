@@ -10,6 +10,8 @@ class _SizableRowState extends State<SizableRow> {
 
   bool isLoaded = false;
 
+  double devideSize = 8;
+
   late double totalWidth;
   late double leftWidth;
 
@@ -42,14 +44,14 @@ class _SizableRowState extends State<SizableRow> {
                   child: Container(
                     height: double.infinity,
                     color: Colors.blue,
-                    child: Text("LeftPage17"),
+                    child: Text("LeftPage18"),
                   ),
                 ),
                 GestureDetector(
                   child: MouseRegion(
                     cursor: SystemMouseCursors.resizeLeftRight,
                     child: Container(
-                      width: 8,
+                      width: devideSize,
                       color: Colors.grey,
                     ),
                   ),
@@ -59,7 +61,9 @@ class _SizableRowState extends State<SizableRow> {
                   onHorizontalDragUpdate: (details) {
                     print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
                     totalWidth = MediaQuery.of(context).size.width;
-                    leftWidth = details.globalPosition.dx;
+                    if (details.globalPosition.dx < totalWidth - devideSize) {
+                      leftWidth = details.globalPosition.dx;
+                    }
                     setState(() {});
                   },
                   onHorizontalDragEnd: (details) {
