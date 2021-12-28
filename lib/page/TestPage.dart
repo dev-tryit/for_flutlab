@@ -15,12 +15,26 @@ class _TestPageState extends State<TestPage> {
         height: double.infinity,
         child: Row(
           children: [
-            Expanded(flex: leftWidth, child: Container(color: Colors.blue, child: Text("LeftPage"))),
+            Expanded(
+              flex: leftWidth,
+              child: Container(
+                height: double.infinity,
+                color: Colors.blue,
+                child: Text("LeftPage"),
+              ),
+            ),
             Container(
               width: 3,
               color: Colors.grey,
             ),
-            Expanded(flex: totalWidth - leftWidth, child: Container(color: Colors.red, child: Text("RightPage"))),
+            Expanded(
+              flex: totalWidth - leftWidth,
+              child: Container(
+                height: double.infinity,
+                color: Colors.red,
+                child: Text("RightPage"),
+              ),
+            ),
           ],
         ),
       ),
