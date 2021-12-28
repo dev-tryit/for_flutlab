@@ -25,7 +25,7 @@ class _SizableRowState extends State<SizableRow> {
 
   void initState() {
     totalWidth = SizeUtil.getSizeByKey(widgetKey).width;
-    leftWidth = 0;
+    leftWidth = totalWidth / 2;
     print("initState totalWidth:$totalWidth, leftWidth:$leftWidth");
   }
 
