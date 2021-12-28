@@ -57,7 +57,7 @@ class _SizableRowState extends State<SizableRow> {
                   onHorizontalDragUpdate: (details) {
                     print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
                     totalWidth = MediaQuery.of(context).size.width;
-                    if (widget.devideSize < details.globalPosition.dx && details.globalPosition.dx < totalWidth - devideSize) {
+                    if (widget.devideSize < details.globalPosition.dx && details.globalPosition.dx < totalWidth - widget.devideSize) {
                       leftWidth = details.globalPosition.dx;
                     }
                     setState(() {});
