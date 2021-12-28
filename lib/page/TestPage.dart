@@ -7,12 +7,23 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text("LeftPage"),
-        Divider(thickness: 1),
-        Text("RightPage"),
-      ],
+    return Scaffold(
+      body: Container(
+        color: Colors.red,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text("LeftPage"),
+                Divider(thickness: 1),
+                Text("RightPage"),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
