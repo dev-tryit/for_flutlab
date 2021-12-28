@@ -50,7 +50,7 @@ class _SizableRowState extends State<SizableRow> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            flex: leftWidth.toInt(),
+            flex: (leftWidth * 1000).toInt(),
             child: widget.leftWidget,
           ),
           GestureDetector(
@@ -73,7 +73,7 @@ class _SizableRowState extends State<SizableRow> {
             },
           ),
           Expanded(
-            flex: (totalWidth - leftWidth).toInt(),
+            flex: ((totalWidth - leftWidth) * 1000).toInt(),
             child: widget.rightWidget,
           ),
         ],
