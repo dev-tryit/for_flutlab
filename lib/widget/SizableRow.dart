@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class SizableRow extends StatelessWidget {
   int totalWidth = 1200;
@@ -18,9 +19,12 @@ class SizableRow extends StatelessWidget {
               child: Text("LeftPage1"),
             ),
           ),
-          Container(
-            width: 8,
-            color: Colors.grey,
+          MouseRegion(
+            cursor: SystemMouseCursors.resizeLeftRight,
+            child: Container(
+              width: 8,
+              color: Colors.grey,
+            ),
           ),
           Expanded(
             flex: totalWidth - leftWidth,
