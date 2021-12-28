@@ -29,7 +29,6 @@ class _SizableRowState extends State<SizableRow> {
     isLoaded = true;
     totalWidth = MediaQuery.of(context).size.width;
     leftWidth = totalWidth / 2;
-    print("totalWidth : $totalWidth, leftWidth : $leftWidth, ");
     setState(() {});
   }
 
@@ -55,19 +54,12 @@ class _SizableRowState extends State<SizableRow> {
                       color: Colors.grey,
                     ),
                   ),
-                  onHorizontalDragStart: (details) {
-                    print("onHorizontalDragStart details:$details");
-                  },
                   onHorizontalDragUpdate: (details) {
-                    print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
                     totalWidth = MediaQuery.of(context).size.width;
                     if (widget.devideSize < details.globalPosition.dx && details.globalPosition.dx < totalWidth - widget.devideSize) {
                       leftWidth = details.globalPosition.dx;
                     }
                     setState(() {});
-                  },
-                  onHorizontalDragEnd: (details) {
-                    print("onHorizontalDragEnd details:$details");
                   },
                 ),
                 Expanded(
