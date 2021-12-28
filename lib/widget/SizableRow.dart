@@ -23,6 +23,7 @@ class _SizableRowState extends State<SizableRow> {
     isLoaded = true;
     totalWidth = MediaQuery.of(context).size.width;
     leftWidth = totalWidth / 2;
+    print("totalWidth : $totalWidth, leftWidth : $leftWidth, ");
     setState(() {});
   }
 
@@ -41,7 +42,7 @@ class _SizableRowState extends State<SizableRow> {
                   child: Container(
                     height: double.infinity,
                     color: Colors.blue,
-                    child: Text("LeftPage11"),
+                    child: Text("LeftPage13"),
                   ),
                 ),
                 GestureDetector(
@@ -56,15 +57,8 @@ class _SizableRowState extends State<SizableRow> {
                     print("onHorizontalDragStart details:$details");
                   },
                   onHorizontalDragUpdate: (details) {
-                    Offset globalPosition = details.globalPosition;
-                    print("onHorizontalDragUpdate globalPosition:${globalPosition}");
-                    if (oldGlobalPosition != null) {
-                      int dif = (globalPosition.dx - oldGlobalPosition!.dx).toInt();
-                      print("onHorizontalDragUpdate dif:$dif");
-                      leftWidth += dif;
-                      setState(() {});
-                    }
-                    oldGlobalPosition = globalPosition;
+                    print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
+                    leftWidth += details.globalPosition.dx;
                   },
                   onHorizontalDragEnd: (details) {
                     print("onHorizontalDragEnd details:$details");
