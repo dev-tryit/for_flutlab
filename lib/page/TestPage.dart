@@ -19,7 +19,10 @@ class _TestPageState extends State<TestPage> {
           ),
           rightWidget: SizableColumn(
             topWidget: Text("3"),
-            bottomWidget: Text("4"),
+            bottomWidget: SizableColumn(
+            topWidget: Text("4"),
+            bottomWidget: Text("5"),
+          ),
           ),
         ),
       ),
