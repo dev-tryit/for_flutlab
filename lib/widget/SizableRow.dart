@@ -71,6 +71,7 @@ class _SizableRowState extends State<SizableRow> {
 
                 double dx = currentGlobalPosition.dx - oldGlobalPosition!.dx;
                 if (threadhold < dx && dx < totalWidth - threadhold) {
+                  print("leftWidth:$leftWidth, dx:$dx, ");
                   leftWidth += dx;
                 }
                 setState(() {});
