@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:algoritm_flutter_web/page/TestPage.dart';
+import 'package:algoritm_flutter_web/util/SizeUtil.dart';
 
 class SizableRow extends StatefulWidget {
   double devideSize;
@@ -34,6 +36,8 @@ class _SizableRowState extends State<SizableRow> {
 
   @override
   Widget build(BuildContext context) {
+    print("build");
+
     if (!isLoaded) {
       WidgetsBinding.instance?.addPostFrameCallback((_) {
         totalWidth = _getSize(widgetKey).width;
@@ -45,13 +49,13 @@ class _SizableRowState extends State<SizableRow> {
     }
 
     return Container(
-      width: double.infinity,
+      width: SizeUtil.screenSize(context).width,
       child: Row(
         children: [
           Container(
             key: widgetKey,
-            width: double.infinity,
-            height: double.infinity,
+            width: SizeUtil.screenSize(context).width,
+            height: SizeUtil.screenSize(context).height,
             child: Row(
               children: [
                 Expanded(

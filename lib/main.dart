@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'page/TestPage.dart';
+import 'package:algoritm_flutter_web/page/TestPage.dart';
 
 void main() {
   runApp(const MyApp());
