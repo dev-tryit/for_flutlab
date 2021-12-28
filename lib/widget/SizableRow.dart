@@ -39,6 +39,7 @@ class _SizableRowState extends State<SizableRow> {
         setState(() {});
       });
     }
+
     return Container(
       key: widgetKey,
       height: double.infinity,
