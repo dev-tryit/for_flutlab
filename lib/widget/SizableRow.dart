@@ -56,7 +56,7 @@ class _SizableRowState extends State<SizableRow> {
             child: Container(
               height: double.infinity,
               color: Colors.red,
-              child: Text("RightPage6"),
+              child: Text("RightPage7"),
             ),
           ),
         ],
