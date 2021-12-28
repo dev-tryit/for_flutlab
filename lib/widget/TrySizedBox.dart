@@ -16,18 +16,18 @@ class TrySizedBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (sizeType == TrySizedBoxSizeType.expand) {
-      return Container(
-        alignment: alignment,
-        child: SizedBox.expand(
+      return SizedBox.expand(
+        child: Container(
+          alignment: alignment,
           child: child,
         ),
       );
     }
 
     if (sizeType == TrySizedBoxSizeType.shrink) {
-      return Container(
-        alignment: alignment,
-        child: SizedBox.shrink(
+      return SizedBox.shrink(
+        child: Container(
+          alignment: alignment,
           child: child,
         ),
       );
@@ -35,11 +35,9 @@ class TrySizedBox extends StatelessWidget {
 
     return Container(
       alignment: alignment,
-      child: Container(
-        child: child,
-        width: width,
-        height: height,
-      ),
+      width: width,
+      height: height,
+      child: child,
     );
   }
 }
