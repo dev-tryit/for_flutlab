@@ -11,30 +11,19 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: TrySizedBox.expand(
-        child: Text("test"),
+        child: SizableRow(
+          leftWidget: leftWidget(),
+          rightWidget: rightWidget(),
+        ),
       ),
     );
   }
-  /*
-  SizableRow(
-          leftWidget: leftWidget(),
-          rightWidget: rightWidget(),
-        )
-*/
 
   Widget leftWidget() {
-    return Container(
-      height: double.infinity,
-      color: Colors.red,
-      child: Text("leftWidget8"),
-    );
+    return Text("leftWidget8");
   }
 
   Widget rightWidget() {
-    return Container(
-      height: double.infinity,
-      color: Colors.red,
-      child: Text("rightWidget8"),
-    );
+    return Text("rightWidget8");
   }
 }
