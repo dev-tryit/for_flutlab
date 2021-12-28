@@ -46,6 +46,8 @@ class _SizableRowState extends State<SizableRow> {
     return Container(
       key: widgetKey,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             flex: leftWidth.toInt(),
