@@ -14,7 +14,7 @@ class _TestPageState extends State<TestPage> {
       body: TrySizedBox.expand(
         child: SizableRow(
           leftWidget: SizableRow(
-            leftWidget: Text("1"),
+            leftWidget: Text("11"),
             rightWidget: Text("2"),
           ),
           rightWidget: SizableColumn(
