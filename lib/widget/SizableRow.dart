@@ -52,7 +52,6 @@ class _SizableRowState extends State<SizableRow> {
       children: [
         Container(
           key: widgetKey,
-          width: totalWidth,
           child: Row(
             children: [
               Expanded(
