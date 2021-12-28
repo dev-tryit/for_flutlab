@@ -1,0 +1,15 @@
+﻿D2//D3.D4//*//Key//False//100//Test1
+LControlKey.NumPad0//C:\Windows\System32\notepad.exe//*//Run//True//100//Test5
+M//LControlKey.F//notepad,wordpad//Key//True//100//Test2
+N//Hello.. Hi//notepad//String//True//100//Test4
+Oemtilde//D.I.R.Return//cmd//Key//True//100//Test3
+LControlKey.Return//LControlKey.OemPeriod//*//Key//True//100//
+
+
+
+ReloadTimer:60
+ToggleKey:LControlKey.LShiftKey.Oemtilde
+KanaModeDisable:True
+HanjaModeDisable:True
+ConsoleWindow:False
+ClickWithoutMove:True
