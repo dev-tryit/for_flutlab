@@ -6,7 +6,7 @@ class SizeUtil {
   }
 
   static Size getSizeByContext(BuildContext context) {
-    final RenderBox renderBox = context!.findRenderObject() as RenderBox;
+    final RenderBox renderBox = context.findRenderObject() as RenderBox;
     Size size = renderBox.size;
     return size;
   }
