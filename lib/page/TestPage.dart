@@ -24,7 +24,7 @@ class _TestPageState extends State<TestPage> {
               ),
             ),
             Container(
-              width: 3,
+              width: 100,
               color: Colors.grey,
             ),
             Expanded(
