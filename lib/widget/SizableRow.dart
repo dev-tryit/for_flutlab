@@ -36,6 +36,7 @@ class _SizableRowState extends State<SizableRow> {
             },
             onHorizontalDragUpdate: (details) {
               print("onHorizontalDragUpdate details:$details");
+              print("onHorizontalDragUpdate details:${details.localPosition}");
               setState(() {
                 leftWidth += (details.delta.dx > 0) ? 2 : -2;
               });
