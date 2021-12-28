@@ -10,7 +10,7 @@ class _TestPageState extends State<TestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SizedBox(
-        width: 200,
+        width: 400,
         child: SizableRow(
           leftWidget: leftWidget(),
           rightWidget: rightWidget(),
