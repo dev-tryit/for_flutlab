@@ -11,23 +11,19 @@ class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        color: Colors.red,
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(flex: leftWidth, child: Text("LeftPage")),
-                Container(
-                  width: 1,
-                  color: Colors.grey,
-                ),
-                Expanded(flex: totalWidth - leftWidth, child: Text("RightPage")),
-              ],
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(flex: leftWidth, child: Container(color: Colors.blue, child: Text("LeftPage"))),
+              Container(
+                width: 1,
+                color: Colors.grey,
+              ),
+              Expanded(flex: totalWidth - leftWidth, child: Container(color: Colors.red, child: Text("RightPage"))),
+            ],
+          ),
+        ],
       ),
     );
   }
