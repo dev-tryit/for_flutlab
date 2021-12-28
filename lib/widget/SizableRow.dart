@@ -59,6 +59,7 @@ class _SizableRowState extends State<SizableRow> {
                   onHorizontalDragUpdate: (details) {
                     print("onHorizontalDragUpdate details.globalPosition.dx:${details.globalPosition.dx}");
                     leftWidth += details.globalPosition.dx;
+                    setState(() {});
                   },
                   onHorizontalDragEnd: (details) {
                     print("onHorizontalDragEnd details:$details");
